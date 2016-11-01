@@ -1,0 +1,106 @@
+\documentclass{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+  \usetheme{default}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme{default}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+
+} 
+
+\setbeamertemplate{footline}[text line]{%
+  \parbox{\linewidth}{\vspace*{0pt}
+    \begin{flushright}Copyright \textcopyright\ 2016 \insertshortauthor.\end{flushright}}}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{color}
+
+\linespread{1.3}
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+\title[Your Short Title]{An introduction to Julia programming}
+\author{Pedro Belin Castellucci}
+\date{November, 2016}
+
+
+\begin{document}
+
+\setbeamercolor{title}{fg=black}
+\setbeamercolor{frametitle}{fg=black}
+
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\section{Introduction}
+
+\begin{frame}
+  \begin{quote}\footnotesize
+
+  ``We want a language that’s \textcolor<2->{red}{open source}, with a \textcolor<3->{red}{liberal license}. We want \textcolor<4->{red}{the speed of C} with the \textcolor<5->{red}{dynamism of Ruby}. We want a language that’s \textcolor<6->{red}{homoiconic}, with \textcolor<7->{red}{true macros like Lisp}, but with obvious, \textcolor<8->{red}{familiar mathematical notation like Matlab}. We want something \textcolor<9->{red}{as usable for general programming as Python}, \textcolor<10->{red}{as easy for statistics as R}, \textcolor<11->{red}{as natural for string processing as Perl}, \textcolor<12->{red}{as powerful for linear algebra as Matlab}, \textcolor<13->{red}{as good at gluing programs together as the shell}. Something that is \textcolor<14->{red}{dirt simple to learn}, yet keeps the most serious hackers happy. We want it \textcolor<15->{red}{interactive} and we want it \textcolor<16->{red}{compiled}.
+\newline
+\visible<17->{(Did we mention it should be as fast as C?)}''\\
+  \href{http://julialang.org/blog/2012/02/why-we-created-julia}{Jeff Bezanson, Stefan Karpinski, Viral Shah, Alan Edelman (2012)}
+     \end{quote}
+\end{frame}
+
+
+\begin{frame}{Who is using Julia?}
+  \begin{itemize}\footnotesize
+  \item[] Stanford University. Introduction to Multidisciplinary Design Optimization (Prof. Mykel J. Kochenderfer).
+  \item[] MIT. Integer Programming and Combinatorial Optimization (Prof. Juan Pablo Vielma).
+  \item[] MIT. Optimization Methods (Prof. Dimitris Bertsimas and Dr. Phebe Vayanos).
+  \item[] University at Buffalo. Linear Programming (Prof. Changhyun Kwon).
+  \item[] “Sapienza” University of Rome. Operations Research (Giampaolo Liuzzi).
+    \item[] University of South Florida. Nonlinear Optimization and Game Theory (Prof. Changhyun Kwon).
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{What can I do with Julia?}
+  \begin{itemize}\footnotesize
+  \item[] Simple Audio IO in Julia (AudioIO).
+  \item[] A neural network (BackpropNeuralNet).
+  \item[] Support vector machines (LIBSVM, LIBLINEAR).
+  \item[] Machine learning (MachineLearning).
+  \item[] Bioinformatics and Computational Biology (Bio).
+  \item[] Curve fitting (CurveFit).
+  \item[] Describe and model financial markets (FinancialMarkets).
+  \item[] Black-box optimization (BlackBoxOptim).
+  \item[] Combinatorics (Combinatorics).
+  \item[] Evolutionary and genetic algorithms (Evolutionary).
+  \item[] Gurobi, GLPK, CPLEX, Cbc, Clp CoinOptServices, JuMP.
+  \item[] \href{http://pkg.julialang.org/}{And more...}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What we will do?}
+  \begin{itemize}
+  \item[] Basic Julia programming.
+  \item[] Explore JuMP for Mixed Integer Linear problems.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \href{https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html}{Why numbering should start at zero}?
+  ``I don't know how many of you have ever met Dijkstra, but you probably know that arrogance in computer science is measured in nano-Dijkstras.'' (Alan Kay)
+\end{frame}
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
