@@ -11,7 +11,7 @@ For this tutorial, I assume the following:
 - You have downloaded and extracted the file containing the version of Gurobi you want to install. The downloads are available at: <http://www.gurobi.com/downloads/gurobi-optimizer>. 
 - You have an working Python 2.7 installation.
 
-As an example we will install Gurobi 7.0.1. Change you current directory to the extracted *gurobi701/linux64* folder, which is the install directory <installdir>:
+As an example we will install Gurobi 7.0.1. Change you current directory to the extracted *gurobi701/linux64* folder, which is the install directory {installdir}:
 
 `cd gurobi701/linux64`
 
@@ -36,11 +36,11 @@ Now, we need to tell Python where we have installed Gurobi. Add the following li
 
 Note that, for different versions of Gurobi, GUROBI_HOME variable will have to be modified accordingly. The last step is to tell the system your license number, which can be obtained at www.gurobi.com.
 
-`<installdir>grbgetkey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
+`${installdir}grbgetkey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
 
-In this step you will be prompted a place to keep your license file (<licensedir>), then we need to tell the system where to find it. Add the following to your .bashrc file:
+In this step you will be prompted a place to keep your license file ({licensedir}), then we need to tell the system where to find it. Add the following to your .bashrc file:
 
-`<licensedir>gurobi.lic`
+`GRB_LICENSE_FILE={licensedir}gurobi.lic`
 
 The last step is to reload your .bashrc:
 
