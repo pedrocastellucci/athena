@@ -56,6 +56,16 @@
 \end{frame}
 
 
+\begin{frame}
+  \frametitle{How fast is it? According to \href{http://julialang.org/benchmarks/}{this link}.}
+  \begin{figure}[htpb]
+    \centering
+    \includegraphics[scale=0.2]{BenchmarkImage.png}
+    \caption{Speed relative to C smaller is better (C performance is 1.0).}
+    \label{fig:benchmark}
+  \end{figure}
+\end{frame}
+
 \begin{frame}{Who is using Julia?}
   \begin{itemize}\footnotesize
   \item[] Stanford University. Introduction to Multidisciplinary Design Optimization (Prof. Mykel J. Kochenderfer).
@@ -96,6 +106,20 @@
   \href{https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html}{Why numbering should start at zero}?
   \pause
   ``I don't know how many of you have ever met Dijkstra, but you probably know that arrogance in computer science is measured in nano-Dijkstras.'' (Alan Kay)
+\end{frame}
+
+\begin{frame}
+  \frametitle{Installing Julia}
+
+  \begin{block}{On Linux/Ubuntu:}
+  sudo add-apt-repository ppa:staticfloat/juliareleases
+
+  sudo apt-get update
+
+  sudo apt-get install julia  
+  \end{block}
+  \vspace{2cm}
+  For other platforms check \href{http://julialang.org/downloads/platform.html}{this link}.
 \end{frame}
 
 \begin{frame}
