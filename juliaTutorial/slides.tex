@@ -23,13 +23,17 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{color}
 
+\usepackage{tikz}
+\usetikzlibrary{mindmap,trees}
+
+
 \linespread{1.3}
 \definecolor{links}{HTML}{2A1B81}
 \hypersetup{colorlinks,linkcolor=,urlcolor=links}
 
-\title[Your Short Title]{An introduction to Julia programming}
+\title[]{Operations research with Julia JuMP}
 \author{Pedro Belin Castellucci}
-\date{November, 2016}
+\date{February, 2016}
 
 
 \begin{document}
@@ -44,6 +48,79 @@
 
 
 \section{Introduction}
+
+\begin{frame}{Mathematical programming}
+
+  \begin{figure}[htpb]
+    \centering
+  \scalebox{0.7}{
+    \begin{tikzpicture}
+
+%      \pgflowlevel{\pgftransformscale{0.7}}
+      
+      \path[mindmap, concept color=purple!50, text=black]
+      node[concept] {Operations \\research}
+      [clockwise from=0]
+      child[concept color=blue!50] {
+        node[concept] {Mathematical programming}
+        [clockwise from=120]
+        child { node[concept] {Convex}
+          child [concept color=green!50, grow=125]{ node[concept] {Semi-definite} } 
+          child [concept color=green!50, grow=90] {node[concept] {Second-order conic}}
+          child [concept color=green!50, grow=55] {node[concept] {Linear}}
+        }
+        child { node[concept] {Integer} }
+        child { node[concept] {Nonlinear} }
+        child { node[concept] {Stochastic} }
+        child { node[concept] {Multi-objective} }
+      };
+    \end{tikzpicture}
+  }
+  \caption{Information from \href{https://en.wikipedia.org/wiki/Mathematical_optimization}{this link}.}
+  \end{figure}
+
+\end{frame}
+
+
+\begin{frame}{Which can JuMP handle?}
+
+  \begin{figure}[htpb]
+    \centering
+  \scalebox{0.7}{
+    \begin{tikzpicture}
+
+%      \pgflowlevel{\pgftransformscale{0.7}}
+      
+      \path[mindmap, concept color=gray!50, text=black]
+      node[concept] {Operations \\research}
+      [clockwise from=0]
+      child[concept color=gray!50] {
+        node[concept] {Mathematical programming}
+        [clockwise from=120]
+        child { node[concept] {Convex}
+          child [concept color=gray!50, grow=125]{ node[draw, circle, purple] {Semi-definite} } 
+          child [concept color=gray!50, grow=90] { node[draw, circle, purple] {Second-order conic}}
+          child [concept color=gray!50, grow=55] { node[draw, circle, purple] {Linear}}
+        }
+        child { node[draw, circle, purple] {Integer} }
+        child { node[draw, circle, purple] {Nonlinear} }
+        child { node[concept] {Stochastic} }
+        child { node[concept] {Multi-objective} }
+      };
+    \end{tikzpicture}
+  }
+  \caption{For JuMP documentation click on \href{http://www.juliaopt.org/JuMP.jl/0.15/}{this link}.}
+  \end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+  \begin{center}
+    Introduction to Julia programming
+    \end{center}
+\end{frame}
+
 
 \begin{frame}
   \begin{quote}\footnotesize
@@ -98,7 +175,7 @@
 \begin{frame}{What we will do?}
   \begin{itemize}
   \item[] Basic Julia programming.
-  \item[] Explore JuMP for Mixed Integer Linear problems.
+  \item[] Explore JuMP for mixed integer linear problems.
   \end{itemize}
 \end{frame}
 
@@ -122,13 +199,13 @@
   For other platforms check \href{http://julialang.org/downloads/platform.html}{this link}.
 \end{frame}
 
-\begin{frame}
-  Implement a function with parameter $n$ to print the first $n$ prime numbers. 
-\end{frame}
+% \begin{frame}
+%   Implement a function with parameter $n$ to print the first $n$ prime numbers. 
+% \end{frame}
 
-\begin{frame}
-  Implement an algorithm to count the number of words in a file.
-\end{frame}
+% \begin{frame}
+%   Implement an algorithm to count the number of words in a file.
+% \end{frame}
 
 \end{document}
 
