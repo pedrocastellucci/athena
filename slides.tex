@@ -1,0 +1,234 @@
+\documentclass{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+  \usetheme{default}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme{default}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+
+} 
+
+\setbeamertemplate{footline}[text line]{%
+  \parbox{\linewidth}{\vspace*{0pt}
+    \begin{flushright}Copyright \textcopyright\ 2016 \insertshortauthor.\end{flushright}}}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{color}
+
+\usepackage{tikz}
+\usetikzlibrary{mindmap,trees}
+
+\linespread{1.3}
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+\title[Your Short Title]{Operations research with Julia/JuMP }
+\author{Pedro Belin Castellucci}
+\date{November, 2016}
+
+
+\begin{document}
+
+\setbeamercolor{title}{fg=black}
+\setbeamercolor{frametitle}{fg=black}
+
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\section{Introduction}
+
+\begin{frame}{Mathematical programming}
+
+  \begin{figure}[htpb]
+    \centering
+  \scalebox{0.7}{
+    \begin{tikzpicture}
+
+%      \pgflowlevel{\pgftransformscale{0.7}}
+      
+      \path[mindmap, concept color=purple!50, text=black]
+      node[concept] {Operations \\research}
+      [clockwise from=0]
+      child[concept color=blue!50] {
+        node[concept] {Mathematical programming}
+        [clockwise from=120]
+        child { node[concept] {Convex}
+          child [concept color=green!50, grow=125]{ node[concept] {Semi-definite} } 
+          child [concept color=green!50, grow=90] {node[concept] {Second-order conic}}
+          child [concept color=green!50, grow=55] {node[concept] {Linear}}
+        }
+        child { node[concept] {Integer} }
+        child { node[concept] {Nonlinear} }
+        child { node[concept] {Stochastic} }
+        child { node[concept] {Multi-objective} }
+      };
+    \end{tikzpicture}
+  }
+  \caption{Information from \href{https://en.wikipedia.org/wiki/Mathematical_optimization}{this link}.}
+  \end{figure}
+
+\end{frame}
+
+
+\begin{frame}{Which can JuMP handle?}
+
+  \begin{figure}[htpb]
+    \centering
+  \scalebox{0.7}{
+    \begin{tikzpicture}
+
+%      \pgflowlevel{\pgftransformscale{0.7}}
+      
+      \path[mindmap, concept color=gray!50, text=black]
+      node[concept] {Operations \\research}
+      [clockwise from=0]
+      child[concept color=gray!50] {
+        node[concept] {Mathematical programming}
+        [clockwise from=120]
+        child { node[concept] {Convex}
+          child [concept color=gray!50, grow=125]{ node[draw, circle, purple] {Semi-definite} } 
+          child [concept color=gray!50, grow=90] { node[draw, circle, purple] {Second-order conic}}
+          child [concept color=gray!50, grow=55] { node[draw, circle, purple] {Linear}}
+        }
+        child { node[draw, circle, purple] {Integer} }
+        child { node[draw, circle, purple] {Nonlinear} }
+        child { node[concept] {Stochastic} }
+        child { node[concept] {Multi-objective} }
+      };
+    \end{tikzpicture}
+  }
+  \caption{For JuMP documentation click on \href{http://www.juliaopt.org/JuMP.jl/0.15/}{this link}.}
+  \end{figure}
+
+\end{frame}
+
+
+\begin{frame}{What we will do?}
+
+  \begin{figure}[htpb]
+    \centering
+  \scalebox{0.7}{
+    \begin{tikzpicture}
+
+%      \pgflowlevel{\pgftransformscale{0.7}}
+      
+      \path[mindmap, concept color=gray!50, text=black]
+      node[concept] {Operations \\research}
+      [clockwise from=0]
+      child[concept color=gray!50] {
+        node[concept] {Mathematical programming}
+        [clockwise from=120]
+        child { node[concept] {Convex}
+          child [concept color=gray!50, grow=125]{ node[concept] {Semi-definite} } 
+          child [concept color=gray!50, grow=90] { node[concept] {Second-order conic}}
+          child [concept color=gray!50, grow=55] { node[draw, circle, purple] {Linear}}
+        }
+        child { node[draw, circle, purple] {Integer} }
+        child { node[concept] {Nonlinear} }
+        child { node[concept] {Stochastic} }
+        child { node[concept] {Multi-objective} }
+      };
+    \end{tikzpicture}
+  }
+  \caption{For JuMP documentation click on \href{http://www.juliaopt.org/JuMP.jl/0.15/}{this link}.}
+  \end{figure}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is mixed linear integer optimization?}
+  \pause
+
+  \begin{tikzpicture}
+    \node (obj) at (-0.5, 0) {Min $c^T x$,};
+    \node (st) at (-1.2,-0.8) {subject to:};
+    \node (const1) at (0,-1.6) {$Ax + By = D$,};
+    \node (const2) at (-0.7,-2.4) {$x \in \mathbb{R}$,};
+    \node (const3) at (-0.7,-3.2) {$y \in \mathbb{Z}$.};
+    \pause
+    
+    \node [align=left] (objLabel) at (4,0.5) {Optimization\\criteria};
+    \draw [blue, thick, ->] (obj) to[out=0, in=180] (objLabel); 
+    \pause
+    
+    \node [align=left] (const1Label) at (4,-1) {Technological\\ constraints};
+    \draw [blue, thick, ->] (const1) to[out=0, in=180] (const1Label); 
+    \pause
+    
+    \node [align=left] (const2Label) at (4, -2.5) {Real variables};
+    \draw[blue, thick, ->] (const2) to[out=0, in=180] (const2Label);
+    \pause
+    
+    \node [align=left] (const3Label) at (4, -3.5) {Integer variables};
+    \draw[blue, thick, ->] (const3) to[out=0, in=180] (const3Label);
+  \end{tikzpicture}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{An example}
+    \begin{tikzpicture}
+    \node (obj) at (-0.5, 0) {Min $2x + 3y$,};
+    \node (st) at (-1.2,-0.8) {subject to:};
+    
+    \node (const1) at (0,-1.6) {$x + y \leq 4$,};
+    \node (const2) at (0,-2.4) {$3x - y \leq 14$,};
+    
+    \node (const3) at (0, -3.2) {$x \in \mathbb{R}_+$,};
+    \node (const4) at (0, -4.0) {$y \in \mathbb{Z}_+$.};
+
+    \pause
+    \node [align=left] (objLabel) at (4,0.5) {Optimization\\criteria};
+    \draw [blue, thick, ->] (obj) to[out=0, in=180] (objLabel); 
+    
+    \node [align=left] (const1Label) at (4,-1.3) {Technological\\ constraints};
+    \draw [blue, thick, ->] (const1) to[out=0, in=180] (const1Label);
+    \draw [blue, thick, ->] (const2) to[out=0, in=180] (const1Label); 
+    
+    \node [align=left] (const3Label) at (4, -2.7) {Real variable};
+    \draw[blue, thick, ->] (const3) to[out=0, in=180] (const3Label);
+    
+    \node [align=left] (const4Label) at (4, -3.7) {Integer variable};
+    \draw[blue, thick, ->] (const4) to[out=0, in=180] (const4Label);
+  \end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{JuMP - Julia for Mathematical Optimization}
+
+  \begin{itemize}
+    \item <2-> [] Domain-specific modeling language.
+    \item <3-> [] User friendliness.
+    \item <4-> [] Speed:
+      \begin{itemize}
+        \item [] Creates problems at similar speed of other modeling languages (e. g. AMPL).
+        \item [] Communicates with solver in memory.
+      \end{itemize}
+    \item <5-> [] Solver independence:
+      \begin{itemize}
+      \item [] Current supports Artelys Knitro, Bonmin, Cbc, Clp, Couenne, CPLEX, ECOS, FICO Xpress, GLPK, Gurobi, Ipopt, MOSEK, NLopt, and SCS.
+      \end{itemize}
+  \end{itemize}
+  
+\end{frame}
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
