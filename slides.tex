@@ -30,7 +30,7 @@
 \definecolor{links}{HTML}{2A1B81}
 \hypersetup{colorlinks,linkcolor=,urlcolor=links}
 
-\title[Your Short Title]{Operations research with Julia/JuMP }
+\title[Your Short Title]{Operations research with Julia and JuMP }
 \author{Pedro Belin Castellucci}
 \date{November, 2016}
 
@@ -151,11 +151,11 @@
   \pause
 
   \begin{tikzpicture}
-    \node (obj) at (-0.5, 0) {Min $c^T x$,};
+    \node (obj) at (-0.5, 0) {Min $c^T (x + y)$,};
     \node (st) at (-1.2,-0.8) {subject to:};
     \node (const1) at (0,-1.6) {$Ax + By = D$,};
-    \node (const2) at (-0.7,-2.4) {$x \in \mathbb{R}$,};
-    \node (const3) at (-0.7,-3.2) {$y \in \mathbb{Z}$.};
+    \node (const2) at (-0.7,-2.4) {$x \in \mathbb{R}^n$,};
+    \node (const3) at (-0.7,-3.2) {$y \in \mathbb{Z}^m$.};
     \pause
     
     \node [align=left] (objLabel) at (4,0.5) {Optimization\\criteria};
@@ -223,6 +223,33 @@
   \end{itemize}
   
 \end{frame}
+
+
+\begin{frame}
+  \centering
+  \vfill
+  \includegraphics[scale=0.6]{live-demo.jpg}
+  \vfill
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Exercise - The knapsack problem}
+  {\footnotesize Let $i \in I$ be an item with value $v_i$ and weight $c_i$. We want to choose the most valuable subset of items to carry in a knaspack without violating its capacity $C$. Let $x_i \in \{0, 1\}$, $i \in I$ indicate whether item $i$ is put into the knapsack. The following integer program solver our knapsack problem.}
+  \vspace{-2cm}
+  \begin{center}
+  \begin{equation*}
+  $\displaystyle Max\ \sum_{i \in I} v_i x_i: \sum_{i \in I} c_i x_i \leq C, \ x_i \in \{0, 1\}, i \in I.$
+  \end{equation*}
+  \end{center}
+
+  \begin{enumerate}
+  \item Solve the instance on the file example.dat.
+  \item As output, provide how many and which items were taken and their aggregated value.
+  \end{enumerate}
+  
+\end{frame}
+
 
 
 \end{document}
