@@ -114,7 +114,7 @@
 \end{frame}
 
 
-\begin{frame}{What we will do?}
+\begin{frame}{What will we do?}
 
   \begin{figure}[htpb]
     \centering
@@ -153,7 +153,7 @@
   \begin{tikzpicture}
     \node (obj) at (-0.5, 0) {Min $c^T (x + y)$,};
     \node (st) at (-1.2,-0.8) {subject to:};
-    \node (const1) at (0,-1.6) {$Ax + By = D$,};
+    \node (const1) at (-0.1,-1.6) {$Ax + By = D$,};
     \node (const2) at (-0.7,-2.4) {$x \in \mathbb{R}^n$,};
     \node (const3) at (-0.7,-3.2) {$y \in \mathbb{Z}^m$.};
     \pause
@@ -179,11 +179,11 @@
 \begin{frame}
   \frametitle{An example}
     \begin{tikzpicture}
-    \node (obj) at (-0.5, 0) {Min $2x + 3y$,};
+    \node (obj) at (-0.5, 0) {Max $x + y$,};
     \node (st) at (-1.2,-0.8) {subject to:};
     
-    \node (const1) at (0,-1.6) {$x + y \leq 4$,};
-    \node (const2) at (0,-2.4) {$3x - y \leq 14$,};
+    \node (const1) at (0,-1.6) {$2x + 3y \leq 10$,};
+    \node (const2) at (0,-2.4) {$3x + 2y \leq 10$,};
     
     \node (const3) at (0, -3.2) {$x \in \mathbb{R}_+$,};
     \node (const4) at (0, -4.0) {$y \in \mathbb{Z}_+$.};
@@ -208,6 +208,7 @@
 \begin{frame}
   \frametitle{JuMP - Julia for Mathematical Optimization}
 
+  \footnotesize
   \begin{itemize}
     \item <2-> [] Domain-specific modeling language.
     \item <3-> [] User friendliness.
@@ -228,21 +229,23 @@
 \begin{frame}
   \centering
   \vfill
-  \includegraphics[scale=0.6]{live-demo.jpg}
+%  \includegraphics[scale=0.6]{live-demo.jpg}
   \vfill
 \end{frame}
 
 
 \begin{frame}
   \frametitle{Exercise - The knapsack problem}
-  {\footnotesize Let $i \in I$ be an item with value $v_i$ and weight $c_i$. We want to choose the most valuable subset of items to carry in a knaspack without violating its capacity $C$. Let $x_i \in \{0, 1\}$, $i \in I$ indicate whether item $i$ is put into the knapsack. The following integer program solver our knapsack problem.}
-  \vspace{-2cm}
+  {\footnotesize Let $i \in I$ be an item with value $v_i$ and weight $c_i$. We want to choose the most valuable subset of items to carry in a knaspack without violating its capacity $C$. Let $x_i \in \{0, 1\}$, $i \in I$, indicate whether item $i$ is put into the knapsack. The following integer program solves our knapsack problem.}
+
+  \vspace{-1cm}
   \begin{center}
   \begin{equation*}
-  $\displaystyle Max\ \sum_{i \in I} v_i x_i: \sum_{i \in I} c_i x_i \leq C, \ x_i \in \{0, 1\}, i \in I.$
+  Max\ \sum_{i \in I} v_i x_i: \sum_{i \in I} c_i x_i \leq C, \ x_i \in \{0, 1\}, i \in I.
   \end{equation*}
   \end{center}
 
+  \footnotesize
   \begin{enumerate}
   \item Solve the instance on the file example.dat.
   \item As output, provide how many and which items were taken and their aggregated value.
