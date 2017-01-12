@@ -1,3 +1,4 @@
+
 \documentclass{beamer}
 %
 % Choose how your presentation looks.
@@ -254,6 +255,36 @@
 \end{frame}
 
 
+\begin{frame}
+  \frametitle{Exercise - Scheduling TV commercials}
+  You are in charge of a scheduling commercials during a TV show. By contract, you must run all the commercials $c \in C$ during the show. Each commercial $c$ has the duration $t_c \leq 3$, $c \in C$, in minutes. The show may have any number of intervals, however, you know that there might be an audience drop for every interval. Also, to prevent audience loss, intervals must not be greater than 3 minutes. 
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Exercise - Scheduling TV commercials}
+
+  \footnotesize
+
+  Let $x_{ic} \in \{0, 1\}$ indicate whether commercial $c$ is schedule to interval $i$. The following integer program solves the problem.
+  
+  \begin{equation*}
+  Min\ \sum_{i=1}^{|C|} y_i,
+  \end{equation*}
+
+  subject to:
+
+  \vspace{-0.7cm}
+  \begin{alignat*}{2}
+    &\sum_{c \in C} t_c x_{ic} \leq 3 y_i && \quad i \in \{1, \ldots, |C|\},\\
+    & \sum_{i=1}^{|C|} x_{ic} = 1, && \quad c \in C,\\
+    & y_i \in \{0, 1\}, && \quad i \in \{1, \ldots, |C|\},\\
+    & x_{ic} \in \{0, 1\}, && \quad i \in \{1, \ldots, |C|\}, c \in C. 
+  \end{alignat*}
+
+Implement the model and solve it using random input data.
+  
+\end{frame}
 
 \end{document}
 
