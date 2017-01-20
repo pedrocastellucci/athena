@@ -40,7 +40,7 @@ Note that, for different versions of Gurobi, GUROBI_HOME variable will have to b
 
 In this step you will be prompted a place to keep your license file ({licensedir}), then we need to tell the system where to find it. Add the following to your .bashrc file:
 
-`GRB_LICENSE_FILE={licensedir}gurobi.lic`
+`export GRB_LICENSE_FILE={licensedir}gurobi.lic`
 
 The last step is to reload your .bashrc:
 
