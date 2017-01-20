@@ -76,7 +76,7 @@
       };
     \end{tikzpicture}
   }
-  \caption{Information from \href{https://en.wikipedia.org/wiki/Mathematical_optimization}{this link}.}
+  \caption{Information from \url{https://en.wikipedia.org/wiki/Mathematical_optimization}.}
   \end{figure}
 
 \end{frame}
@@ -109,7 +109,7 @@
       };
     \end{tikzpicture}
   }
-  \caption{For JuMP documentation click on \href{http://www.juliaopt.org/JuMP.jl/0.15/}{this link}.}
+  \caption{For JuMP documentation go to \url{http://www.juliaopt.org/JuMP.jl/0.15/}.}
   \end{figure}
 
 \end{frame}
@@ -142,7 +142,7 @@
       };
     \end{tikzpicture}
   }
-  \caption{For JuMP documentation click on \href{http://www.juliaopt.org/JuMP.jl/0.15/}{this link}.}
+  \caption{For JuMP documentation go to \url{http://www.juliaopt.org/JuMP.jl/0.15/}.}
   \end{figure}
 
 \end{frame}
@@ -285,6 +285,92 @@
 Implement the model and solve it using random input data.
   
 \end{frame}
+
+
+\begin{frame}
+  \frametitle{One step further -- callbacks}
+
+  \begin{enumerate}
+  \item [] Lazy constraints
+  \item [] User cuts
+  \item [] User heuristics
+  \item [] Solver progress
+  \item [] Informational
+  \end{enumerate}
+
+    \vfill \footnotesize
+  More info at: \url{https://jump.readthedocs.io/en/latest/callbacks.html}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Lazy constraints}
+  Called when new solutions are found.
+
+  \begin{block}{Code:}\footnotesize
+    
+    \textcolor{violet}{\textbf{function}} myLazyConstraint(cb)
+    
+    \hspace{1cm}    ...
+    
+    \hspace{1cm}    @lazyconstraint(cb, myconstraint, localcut=true)
+
+    \textcolor{violet}{\bf end}
+    
+    addlazycallback(m, myLazyConstraint)
+
+    solve(m)
+  \end{block}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{User cuts}
+  Called when solver reaches a new node in the branch-and-bound tree
+
+  \begin{block}{Code:}\footnotesize
+    
+    \textcolor{violet}{\textbf{function}} myUserCut(cb)
+    
+    \hspace{1cm}    ...
+    
+    \hspace{1cm}    @usercut(cb, myconstraint, localcut=true)
+
+    \textcolor{violet}{\bf end}
+    
+    addcutcallback(m, myUserCut)
+
+    solve(m)
+  \end{block}
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{User heuristics}
+
+  Create solutions and submit them back to the solver
+
+  \begin{block}{Code:}\footnotesize
+    
+    \textcolor{violet}{\textbf{function}} myHeuristic(cb)
+    
+    \hspace{1cm}    ...
+    
+    \hspace{1cm}    setsolutionvalue(cb, x, value)
+    
+    \hspace{1cm}    addsolution(cb)
+
+    \textcolor{violet}{\bf end}
+    
+    addheuristiccallback(m, myHeuristic)
+
+    solve(m)
+  \end{block}
+
+\end{frame}
+
 
 \end{document}
 
