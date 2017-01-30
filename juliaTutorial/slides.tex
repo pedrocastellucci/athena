@@ -1,3 +1,5 @@
+
+
 \documentclass{beamer}
 %
 % Choose how your presentation looks.
@@ -12,7 +14,7 @@
   \usefonttheme{default}  % or try serif, structurebold, ...
   \setbeamertemplate{navigation symbols}{}
   \setbeamertemplate{caption}[numbered]
-
+  \setbeamerfont{caption}{size=\scriptsize}
 } 
 
 \setbeamertemplate{footline}[text line]{%
@@ -76,7 +78,7 @@
       };
     \end{tikzpicture}
   }
-  \caption{Information from \href{https://en.wikipedia.org/wiki/Mathematical_optimization}{this link}.}
+  \caption{Information from \url{en.wikipedia.org/wiki/Mathematical_optimization}.}
   \end{figure}
 
 \end{frame}
@@ -109,7 +111,7 @@
       };
     \end{tikzpicture}
   }
-  \caption{For JuMP documentation click on \href{http://www.juliaopt.org/JuMP.jl/0.15/}{this link}.}
+  \caption{For JuMP documentation check \url{www.juliaopt.org/JuMP.jl/0.15/}.}
   \end{figure}
 
 \end{frame}
@@ -128,17 +130,18 @@
   ``We want a language that’s \textcolor<2->{red}{open source}, with a \textcolor<3->{red}{liberal license}. We want \textcolor<4->{red}{the speed of C} with the \textcolor<5->{red}{dynamism of Ruby}. We want a language that’s \textcolor<6->{red}{homoiconic}, with \textcolor<7->{red}{true macros like Lisp}, but with obvious, \textcolor<8->{red}{familiar mathematical notation like Matlab}. We want something \textcolor<9->{red}{as usable for general programming as Python}, \textcolor<10->{red}{as easy for statistics as R}, \textcolor<11->{red}{as natural for string processing as Perl}, \textcolor<12->{red}{as powerful for linear algebra as Matlab}, \textcolor<13->{red}{as good at gluing programs together as the shell}. Something that is \textcolor<14->{red}{dirt simple to learn}, yet keeps the most serious hackers happy. We want it \textcolor<15->{red}{interactive} and we want it \textcolor<16->{red}{compiled}.
 \newline
 \visible<17->{(Did we mention it should be as fast as C?)}''\\
-  \href{http://julialang.org/blog/2012/02/why-we-created-julia}{Jeff Bezanson, Stefan Karpinski, Viral Shah, Alan Edelman (2012)}
+(Jeff Bezanson, Stefan Karpinski, Viral Shah, Alan Edelman (2012))
+\url{julialang.org/blog/2012/02/why-we-created-julia}
      \end{quote}
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{How fast is it? According to \href{http://julialang.org/benchmarks/}{this link}.}
+  \frametitle{How fast is it?}
   \begin{figure}[htpb]
     \centering
     \includegraphics[scale=0.2]{BenchmarkImage.png}
-    \caption{Speed relative to C smaller is better (C performance is 1.0).}
+    \caption{Speed relative to C smaller is better (C performance is 1.0). According to \url{julialang.org/benchmarks/}.}
     \label{fig:benchmark}
   \end{figure}
 \end{frame}
@@ -151,7 +154,9 @@
   \item[] University at Buffalo. Linear Programming (Prof. Changhyun Kwon).
   \item[] “Sapienza” University of Rome. Operations Research (Giampaolo Liuzzi).
     \item[] University of South Florida. Nonlinear Optimization and Game Theory (Prof. Changhyun Kwon).
-  \end{itemize}
+    \end{itemize}
+
+    \footnotesize{For more check \url{http://julialang.org/teaching/}.}
 \end{frame}
 
 
@@ -170,9 +175,12 @@
    Combinatorics& (Combinatorics),\\
    Evolutionary and genetic algorithms& (Evolutionary),\\
   \end{tabular}
+  
   \vfill
-   Gurobi, GLPK, CPLEX, Cbc, Clp CoinOptServices, JuMP.
-   \href{http://pkg.julialang.org/}{And more...}
+  Gurobi, GLPK, CPLEX, Cbc, Clp CoinOptServices, JuMP.
+
+  For more check:
+   \url{http://pkg.julialang.org/}
   
 \end{frame}
 
@@ -188,7 +196,7 @@
   Arrays are indexed starting at one.
   \pause
   \vfill
-  \href{https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html}{Why numbering should start at zero}?
+  Why numbering should start at zero?\footnote{\url{www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html}}
   \pause
   ``I don't know how many of you have ever met Dijkstra, but you probably know that arrogance in computer science is measured in nano-Dijkstras.'' (Alan Kay)
 \end{frame}
@@ -204,7 +212,7 @@
   sudo apt-get install julia  
   \end{block}
   \vspace{2cm}
-  For other platforms check \href{http://julialang.org/downloads/platform.html}{this link}.
+  For other platforms check \url{julialang.org/downloads/platform.html}.
 \end{frame}
 
 % \begin{frame}
@@ -214,6 +222,15 @@
 % \begin{frame}
 %   Implement an algorithm to count the number of words in a file.
 % \end{frame}
+
+\begin{frame}
+  \vfill
+  \centering
+  This work is licensed under Creative Commons Attribution 4.0 International License.
+  For more information check \url{https://creativecommons.org/licenses/by/4.0/}.
+  \vfill
+\end{frame}
+
 
 \end{document}
 
