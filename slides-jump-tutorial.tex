@@ -13,7 +13,7 @@
   \usefonttheme{default}  % or try serif, structurebold, ...
   \setbeamertemplate{navigation symbols}{}
   \setbeamertemplate{caption}[numbered]
-
+  \setbeamerfont{caption}{size=\scriptsize}
 } 
 
 \setbeamertemplate{footline}[text line]{%
@@ -31,9 +31,9 @@
 \definecolor{links}{HTML}{2A1B81}
 \hypersetup{colorlinks,linkcolor=,urlcolor=links}
 
-\title[Your Short Title]{Operations research with Julia and JuMP }
+\title[Julia and JuMP]{Operations research with Julia and JuMP}
 \author{Pedro Belin Castellucci}
-\date{November, 2016}
+\date{February, 2017}
 
 
 \begin{document}
@@ -44,6 +44,9 @@
 
 \begin{frame}
   \titlepage
+
+  \centering
+\footnotesize Online material at \url{github.com/pedrocastellucci/athena}.
 \end{frame}
 
 
@@ -230,7 +233,7 @@
 \begin{frame}
   \centering
   \vfill
-  \includegraphics[scale=0.6]{live-demo.jpg}
+  \includegraphics[scale=0.6]{images/live-demo.jpg}
   \vfill
 \end{frame}
 
@@ -291,11 +294,11 @@ Implement the model and solve it using random input data.
   \frametitle{One step further -- callbacks}
 
   \begin{enumerate}
-  \item [] Lazy constraints
-  \item [] User cuts
-  \item [] User heuristics
-  \item [] Solver progress
-  \item [] Informational
+  \item [] Lazy constraints.
+  \item [] User cuts.
+  \item [] User heuristics.
+  \item [] Solver progress.
+  \item [] Informational.
   \end{enumerate}
 
     \vfill \footnotesize
@@ -327,7 +330,7 @@ Implement the model and solve it using random input data.
 
 \begin{frame}
   \frametitle{User cuts}
-  Called when solver reaches a new node in the branch-and-bound tree
+  Called when solver reaches a new node in the branch-and-bound tree.
 
   \begin{block}{Code:}\footnotesize
     
@@ -350,7 +353,7 @@ Implement the model and solve it using random input data.
 \begin{frame}
   \frametitle{User heuristics}
 
-  Create solutions and submit them back to the solver
+  Create solutions and submit them back to the solver.
 
   \begin{block}{Code:}\footnotesize
     
